@@ -10,7 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-*.local
+# uncomment below code to remove .env.local file from git adding
+# *.local
 
 # Editor directories and files
 .vscode/*
