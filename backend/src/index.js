@@ -2,6 +2,7 @@
 
 import express from "express";
 import dotenv from "dotenv";
+import {clerkMiddleware} from '@clerk/express'
 
 import { connectDB } from "./lib/db.js";
 
@@ -22,6 +23,9 @@ const PORT = process.env.PORT;
 // to parse req.body
 // Returns middleware that only parses json data
 app.use(express.json());
+
+// it will add auth to req object
+app.use(clerkMiddleware())
 
 // if user hit the api route , then run userRoutes function, present in routes folder
 app.use("/api/users", userRoutes);
