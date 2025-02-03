@@ -19,6 +19,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT;
 
+// to parse req.body
+// Returns middleware that only parses json data
+app.use(express.json());
+
 // if user hit the api route , then run userRoutes function, present in routes folder
 app.use("/api/users", userRoutes);
 

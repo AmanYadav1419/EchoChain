@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
     //   this is asscoated with clerk id as user id
-    clerkID: {
+    clerkId: {
       type: String,
       require: true,
       unique: true,

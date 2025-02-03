@@ -28,4 +28,3 @@ const messageSchema = new mongoose.Schema(
 // export this messageSchema in model , so we can use it later
 export const Message = mongoose.model("Message", messageSchema);
 
-// video start from 44:30
