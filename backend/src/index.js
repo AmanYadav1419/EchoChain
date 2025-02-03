@@ -2,6 +2,10 @@
 
 import express from "express";
 import dotenv from "dotenv";
+import {clerkMiddleware} from '@clerk/express'
+
+import { connectDB } from "./lib/db.js";
+
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
 import adminRoutes from "./routes/admin.route.js";
@@ -15,6 +19,13 @@ dotenv.config();
 // call the express function and save it to in variable app
 const app = express();
 const PORT = process.env.PORT;
+
+// to parse req.body
+// Returns middleware that only parses json data
+app.use(express.json());
+
+// it will add auth to req object
+app.use(clerkMiddleware())
 
 // if user hit the api route , then run userRoutes function, present in routes folder
 app.use("/api/users", userRoutes);
@@ -36,4 +47,6 @@ app.use("/api/stats", statRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
+  // to conect with database when the backend app starts running
+  connectDB();
 });
