@@ -35,7 +35,8 @@ export const requireAdmin = async (req, res, next) => {
     // and if user is authenticated then call the next function
     // and next function is whatever next is coming in code
     next();
-  } catch (error) {}
+    // handle the error
+  } catch (error) {
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
 };
-
-// video start from 1:02:30
