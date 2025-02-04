@@ -97,3 +97,61 @@ export const deleteSong = async (req, res, next) => {
     next(error);
   }
 };
+
+// function to create album
+export const createAlbum = async (req, res, next) => {
+  try {
+    // get all the data from req.body
+    const { title, artist, releaseYear } = req.body;
+    const { imageFile } = req.files;
+
+    // convert the image file to the url
+    const imageUrl = await uploadToCloudinary(imageFile);
+
+    // we have the data , then create the album now
+    const album = new Album({
+      title,
+      artist,
+      imageUrl,
+      releaseYear,
+    });
+
+    // now album save to database
+    await album.save();
+
+    // then send the res status code
+    res.status(201).json(album);
+  } catch (error) {
+    console.log("Error in createAlbum", error);
+    // error handler middleware
+    next(error);
+  }
+};
+
+// function to delete album
+export const deleteAlbum = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    // as when we delete album, we delete all the songs which is present in album by finding it by id
+    await Song.deleteMany({ albumId: id });
+
+    // then we can simply delete the album by finding it by id
+    await Album.findByIdAndDelete(id);
+
+    // then send the res status code
+    res.status(200).json({ message: "Album Deleted Sucessfully" });
+  } catch (error) {
+    console.log("Error in deleting Album", error);
+    // error handler middleware
+    next(error);
+  }
+};
+
+// to check user is admin or not
+// if user is admin then only showing the admin dashboard, for that this is a fn
+export const checkAdmin = async (req, res, next) => {
+  res.status(200).json({ admin: true });
+};
+
+// video start from 1:33:50
