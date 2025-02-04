@@ -154,4 +154,3 @@ export const checkAdmin = async (req, res, next) => {
   res.status(200).json({ admin: true });
 };
 
-// video start from 1:33:50
