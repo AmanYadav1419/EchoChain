@@ -19,6 +19,7 @@ const uploadToCloudinary = async (file) => {
   }
 };
 
+// function to create song
 export const createSong = async (req, res, next) => {
   try {
     // if the required requested file doesn't exists
@@ -66,6 +67,33 @@ export const createSong = async (req, res, next) => {
   } catch (error) {
     console.log("Error in CreateSong", error);
     // this would handle the error i.e we will create error handler middleware
+    next(error);
+  }
+};
+
+// function to delete song
+export const deleteSong = async (req, res, next) => {
+  try {
+    // extract the id from req.params
+    const { id } = req.params;
+
+    // find the song by id in database
+    const song = await Song.findById(id);
+
+    // if song belongs to an album, update the album's song array
+    if (song.albumId) {
+      await Album.findByIdAndUpdate(song.albumId, {
+        $pull: { songs: song._id },
+      });
+    }
+
+    // then delete the song by id
+    await song.findByIdAndUpdate(id);
+    // then send the status code
+    res.send(200).json({ message: "Song Deleted Sucessfully" });
+  } catch (error) {
+    console.log("Error in delete Song", error);
+    // error handler middleware
     next(error);
   }
 };
