@@ -3,7 +3,7 @@
 
 import { User } from "../models/user.model.js";
 
-export const authCallback = async (req, res) => {
+export const authCallback = async (req, res, next) => {
   try {
     // destructure the user data which is getting from request.body
     const { id, firstName, lastName, imageUrl } = req.body;
@@ -28,8 +28,7 @@ export const authCallback = async (req, res) => {
     // just for this time , we can update the error format and message in future
     console.log("Error in auth callback", error);
 
-    // and then send response of error status success of false
-    // and we can send message also , for now we are sending message
-    res.status(500).json({ message: "Internal Server Error", error });
+    // now we are sending the error to the error handler middleware
+    next(error);
   }
 };
