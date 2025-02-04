@@ -6,6 +6,6 @@ const router = Router();
 
 // at admin route it wil call the getAdmin function which is on admin.controller.js
 // for that before that call the middleware functions
-router.get("/", protectRoute, requireAdmin, createSong);
+router.post("/songs", protectRoute, requireAdmin, createSong);
 
 export default router;
