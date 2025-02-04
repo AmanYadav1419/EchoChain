@@ -64,6 +64,16 @@ app.use("/api/albums", albumRoutes);
 // statitics route
 app.use("/api/stats", statRoutes);
 
+// error handler middleware
+app.use((err, req, res, next) => {
+  // modify the error message according to production and development mode
+  res.staus(500).json({
+    messgae:
+      process.env.NODE_ENV === "production"
+        ? "Internal Server Error"
+        : err.messgae,
+  });
+});
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
   // to conect with database when the backend app starts running
