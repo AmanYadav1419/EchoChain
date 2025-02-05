@@ -79,3 +79,6 @@ app.listen(PORT, () => {
   // to conect with database when the backend app starts running
   connectDB();
 });
+
+// TODO: socket.io implementation
+// video start from 2:02:10

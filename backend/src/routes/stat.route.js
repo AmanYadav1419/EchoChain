@@ -1,9 +1,10 @@
 import { Router } from "express";
+import { protectRoute, requireAdmin } from "../middleware/auth.middleware";
+import { getStats } from "../controller/stat.controller.js";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-    res.send("Stat route with get method")
-})
+// this route is protectroute need to login and should be an admin to use this route
+router.get("/", protectRoute, requireAdmin, getStats);
 
 export default router;
