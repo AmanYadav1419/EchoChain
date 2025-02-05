@@ -107,5 +107,3 @@ export const getTrendingSongs = async (req, res, next) => {
     next(error);
   }
 };
-
-// video start from 1:49:40
