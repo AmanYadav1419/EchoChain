@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import { clerkMiddleware } from "@clerk/express";
 import fileUpload from "express-fileupload";
 import path from "path";
-
+import cors from "cors";
 import { connectDB } from "./lib/db.js";
 
 import userRoutes from "./routes/user.route.js";
@@ -22,6 +22,13 @@ const __dirname = path.resolve();
 // call the express function and save it to in variable app
 const app = express();
 const PORT = process.env.PORT;
+
+app.use(cors(
+  {
+    origin:"http://localhost:3000",
+    credentials:true,
+  }
+));
 
 // to parse req.body
 // Returns middleware that only parses json data
