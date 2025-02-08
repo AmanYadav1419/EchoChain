@@ -1,6 +1,6 @@
 // this is a controller file for album
 // all the code realted to album route will be written here
-import Album from "../models/album.model.js";
+import {Album} from "../models/album.model.js";
 
 // function to get all the albums
 export const getAllAlbums = async (req, res, next) => {
