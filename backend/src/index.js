@@ -88,4 +88,3 @@ app.listen(PORT, () => {
 });
 
 // TODO: socket.io implementation
-// video start from 2:02:10
