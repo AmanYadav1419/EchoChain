@@ -1,13 +1,13 @@
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Outlet } from "react-router-dom";
 import LeftSidebar from "./components/LeftSidebar";
-// import {LeftSidebar}  from "./components/LeftSidebar.tsx";
 
 const MainLayout = () => {
-  const isMobile= false;
+  const isMobile= false;   {/*Set to false can be used for mobile */}
   return (
     <div className='h-screen bg-black text-white flex flex-col'>
 
+      {/* Container for resizable panels */}
       <ResizablePanelGroup direction='horizontal' className='flex-1 flex h-full overflow-hidden p-2'>
 
         {/* left sidebar */}
@@ -20,9 +20,10 @@ const MainLayout = () => {
 
         {/* Main content */}
         <ResizablePanel defaultSize={isMobile ? 80 :60}>
-          <Outlet />
+          <Outlet /> {/* Displays the content of the current route */}
         </ResizablePanel>
 
+        {/* Another divider */}
         <ResizableHandle className='w-2 bg-black rounded-lg transition-colors'  />
 
         {/* right sidebar */}
@@ -37,5 +38,5 @@ const MainLayout = () => {
 
 export default MainLayout;
 
-// video start from 2:43:10
+
 
