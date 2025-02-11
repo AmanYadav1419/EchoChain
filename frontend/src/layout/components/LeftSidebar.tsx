@@ -1,26 +1,23 @@
 import PlaylistSkeleton from "@/components/skeletons/PlaylistSkeleton";
 import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { cn } from "@/lib/utils";   // Utility function for class names
+import { cn } from "@/lib/utils"; // Utility function for class names
 import { useMusicStore } from "@/stores/useMusicStore";
 import { SignedIn } from "@clerk/clerk-react";
 import { HomeIcon, Library, MessageCircle } from "lucide-react";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LeftSidebar = () => {
-  // for now we are giving loading as hard code value
-
-// Get albums, fetch function, and loading state from the store
-const {albums,fetchAlbums,isLoading} = useMusicStore()
-
+  // Get albums, fetch function, and loading state from the store
+  const { albums, fetchAlbums, isLoading } = useMusicStore();
 
   // Fetch albums when the component loads
-useEffect(() => {
-    fetchAlbums()
-},[fetchAlbums])
+  useEffect(() => {
+    fetchAlbums();
+  }, [fetchAlbums]);
 
-console.log({albums });
+  console.log({ albums });
 
   return (
     <div className="h-full flex flex-col gap-2">
@@ -58,7 +55,7 @@ console.log({albums });
           </SignedIn>
         </div>
       </div>
-      
+
       {/*library */}
       <div className="flex-1 rounded-lg bg-zinc-900 p-4">
         <div className="flex items-center justify-between mb-4">
@@ -73,28 +70,31 @@ console.log({albums });
           <div className="space-y-2">
             {
               // if loading is true render a skeleton component
-              isLoading ? 
+              isLoading ? (
                 // this is a custom component created by us manually
                 <PlaylistSkeleton />
+              ) : (
                 // if not loading show this
-                :(albums.map((album) => (
-                    <Link to={'/albums/${album.id}'}
+                albums.map((album) => (
+                  <Link
+                    to={`/albums/${album._id}`}
                     key={album._id}
                     className="p-2 hover:bg-zinc-800 rounded-md flex items-center gap-3 group cursor-pointer"
-                    >
-                        <img src={album.imageUrl} alt="Playlist img" 
-                            className="size-12 rounded-md flex-shrink-0 object-cover"
-                        />
+                  >
+                    <img
+                      src={album.imageUrl}
+                      alt="Playlist img"
+                      className="size-12 rounded-md flex-shrink-0 object-cover"
+                    />
 
-                        <div className="flex-1 min-w-0 hidden md:block">
-                            <p className="font-medium truncate">
-                                {album.title}
-                            </p>
-                            <p className="text-sm text-zinc-400 truncate">
-                                Album . {album.artist}
-                            </p>
-                        </div>
-                    </Link>
+                    <div className="flex-1 min-w-0 hidden md:block">
+                      <p className="font-medium truncate">{album.title}</p>
+
+                      <p className="text-sm text-zinc-400 truncate">
+                        Album • {album.artist}
+                      </p>
+                    </div>
+                  </Link>
                 ))
               )
             }
@@ -106,6 +106,5 @@ console.log({albums });
 };
 
 export default LeftSidebar;
-
 
 // 2:25:52
