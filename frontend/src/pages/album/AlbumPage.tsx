@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useMusicStore } from "@/stores/useMusicStore";
+import { Play } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -42,10 +44,17 @@ const AlbumPage = () => {
                                     <span className="font-medium text-white">{currentAlbum?.artist}</span>
                                     <span>• {currentAlbum?.songs.length} songs</span>
                                     <span>• {currentAlbum?.releaseYear}</span>
-
                                 </div>
-
                             </div>
+                        </div>
+                        {/* play button */}
+                        <div className='px-6 pb-4 flex items-center gap-6'>
+                            <Button
+                                size='icon'
+                                className='w-14 h-14 rounded-full bg-green-500 hover:bg-green-400 hover:scale-105 transition-all'
+                            >
+                                <Play className='h-7 w-7 text-black' />
+                            </Button>
                         </div>
                     </div>
                 </div>
