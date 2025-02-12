@@ -74,7 +74,7 @@ app.use("/api/stats", statRoutes);
 // error handler middleware
 app.use((err, req, res, next) => {
   // modify the error message according to production and development mode
-  res.staus(500).json({
+  res.status(500).json({
     messgae:
       process.env.NODE_ENV === "production"
         ? "Internal Server Error"
