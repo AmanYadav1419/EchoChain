@@ -23,7 +23,7 @@ const AlbumPage = () => {
 
   return (
     <div className="h-full">
-      <ScrollArea className="h-full">
+      <ScrollArea className="h-full rounded-md">
         {/* Main Content */}
         <div className="relative min-h-full">
           {/* bg gradient */}
@@ -133,4 +133,5 @@ const AlbumPage = () => {
 };
 export default AlbumPage;
 
-//done upto 3:46:10
+
+// completed till 4:04:44
