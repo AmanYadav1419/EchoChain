@@ -34,6 +34,8 @@ export const PlaybackControls = () => {
 		};
 	}, [currentSong]);
 
+
+	
     const handleSeek = (value: number[]) => {
 		if (audioRef.current) {
 			audioRef.current.currentTime = value[0];
