@@ -6,7 +6,7 @@ import { Clock, Pause, Play } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export const formatDuration = (seconds: number) => {
+const formatDuration = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
   return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
@@ -47,8 +47,8 @@ const AlbumPage = () => {
         <div className="relative min-h-full">
           {/* bg gradient */}
           <div
-            className='absolute inset-0 bg-gradient-to-b from-[#5038a0]/80 via-zinc-900/80
-					 to-zinc-900 pointer-events-none'
+            className="absolute insert-0 bg-gradient-to-b from-[#5038a0]/80 via-zinc-900/80 
+                        to-zinc-900 pointer-events-none"
             aria-hidden="true"
           />
 
