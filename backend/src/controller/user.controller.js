@@ -2,6 +2,9 @@
 // all the code realted to user route will be written here
 import { User } from "../models/user.model.js";
 // this function is for getting the user
+import { Message } from "../models/message.model.js";
+// this function is for getting the messages
+
 export const getAllUsers = async (req, res, next) => {
   try {
     // get the current user id
@@ -16,4 +19,22 @@ export const getAllUsers = async (req, res, next) => {
     // error handling middleware
     next(error);
   }
+};
+
+export const getMessages = async (req, res, next) => {
+	try {
+		const myId = req.auth.userId;
+		const { userId } = req.params;
+
+		const messages = await Message.find({
+			$or: [
+				{ senderId: userId, receiverId: myId },
+				{ senderId: myId, receiverId: userId },
+			],
+		}).sort({ createdAt: 1 });
+
+		res.status(200).json(messages);
+	} catch (error) {
+		next(error);
+	}
 };

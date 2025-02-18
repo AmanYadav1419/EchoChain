@@ -7,6 +7,10 @@ import fileUpload from "express-fileupload";
 import path from "path";
 import cors from "cors";
 import { connectDB } from "./lib/db.js";
+import { createServer } from "http";
+
+import { initializeSocket } from "./lib/socket.js";
+// import the routes
 
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
@@ -22,6 +26,9 @@ const __dirname = path.resolve();
 // call the express function and save it to in variable app
 const app = express();
 const PORT = process.env.PORT;
+
+const httpServer = createServer(app);
+initializeSocket(httpServer);
 
 app.use(cors(
   {
@@ -81,10 +88,8 @@ app.use((err, req, res, next) => {
         : err.messgae,
   });
 });
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
   // to conect with database when the backend app starts running
   connectDB();
 });
-
-// TODO: socket.io implementation
