@@ -17,7 +17,7 @@ const Topbar = () => {
         "
         >
             <div className="flex gap-2 items-centre">
-                <img src="/echochain.png"className='size-8' alt='EchoChain logo' /> {/* echochain logo on home page*/}
+                <img src="/Echo.png"className='size-8' alt='EchoChain logo' /> {/* echochain logo on home page*/}
                 EchoChain
             </div>
             <div className='flex items-center gap-4'>
