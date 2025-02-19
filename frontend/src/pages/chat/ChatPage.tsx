@@ -92,7 +92,7 @@ export default ChatPage;
 
 const NoConversationPlaceholder = () => (
 	<div className='flex flex-col items-center justify-center h-full space-y-6'>
-		<img src='/spotify.png' alt='Spotify' className='size-16 animate-bounce' />  {/* add echochain image to public folder */}
+		<img src='/Echo.png' alt='Echo' className='size-16 animate-bounce' />  {/* add echochain image to public folder */}
 		<div className='text-center'>
 			<h3 className='text-zinc-300 text-lg font-medium mb-1'>No conversation selected</h3>
 			<p className='text-zinc-500 text-sm'>Choose a friend to start chatting</p>
