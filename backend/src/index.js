@@ -30,12 +30,12 @@ const PORT = process.env.PORT;
 const httpServer = createServer(app);
 initializeSocket(httpServer);
 
-app.use(cors(
-  {
-    origin:"http://localhost:3000",
-    credentials:true,
-  }
-));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // to parse req.body
 // Returns middleware that only parses json data
@@ -77,6 +77,15 @@ app.use("/api/albums", albumRoutes);
 
 // statitics route
 app.use("/api/stats", statRoutes);
+
+// Serve frontend static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
 
 // error handler middleware
 app.use((err, req, res, next) => {
