@@ -35,12 +35,9 @@ const httpServer = createServer(app);
 // Initializes WebSocket communication on the created HTTP server
 initializeSocket(httpServer);
 
-// Enables Cross-Origin Resource Sharing (CORS) for the frontend running on localhost:3000
 app.use(cors(
   {
-     // Allows requests only from this origin
     origin:"http://localhost:3000",
-     // Allows cookies and authentication headers to be sent
     credentials:true,
   }
 ));
@@ -86,6 +83,15 @@ app.use("/api/albums", albumRoutes);
 
 // statitics route
 app.use("/api/stats", statRoutes);
+
+// Serve frontend static files in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
 
 // error handler middleware
 app.use((err, req, res, next) => {
