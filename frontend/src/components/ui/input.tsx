@@ -3,6 +3,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
+  // Destructure props: `className`, `type`, and the rest of `props`
   ({ className, type, ...props }, ref) => {
     return (
       <input
@@ -17,6 +18,8 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
     )
   }
 )
+// Set the display name for debugging and dev tools
 Input.displayName = "Input"
 
+// Export the `Input` component for use in other parts of the app  
 export { Input }

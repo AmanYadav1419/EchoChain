@@ -1,3 +1,4 @@
+// Represents a song in the system
 export interface Song {
     _id: string;
     title: string;
@@ -10,6 +11,7 @@ export interface Song {
     updatedAt: string;
 }
 
+// Represents an album, which contains multiple songs
 export interface Album {
     _id: string;
     title: string;
@@ -19,6 +21,7 @@ export interface Album {
     songs: Song[];
 }
 
+// Represents statistics related to the music database
 export interface Stats{
     totalSongs: number;
     totalAlbums: number;
@@ -27,6 +30,7 @@ export interface Stats{
 
 }
 
+// Represents a message exchanged between users
 export interface Message {
     _id: string;
     senderId: string;
@@ -35,6 +39,7 @@ export interface Message {
     createdAt: string;
     }
 
+    // Represents a user in the system
 export interface User {
     _id: string;
     clerkId: string;

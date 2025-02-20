@@ -21,20 +21,28 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
+// Function to get messages between the authenticated user and another user
 export const getMessages = async (req, res, next) => {
 	try {
+		// Extract the authenticated user's ID from the request
 		const myId = req.auth.userId;
+		// Extract the other user's ID from the request parameters
 		const { userId } = req.params;
 
+		// Query the database for messages where:
+		// - The authenticated user sent messages to the other user OR
+		// - The authenticated user received messages from the other user
 		const messages = await Message.find({
 			$or: [
-				{ senderId: userId, receiverId: myId },
-				{ senderId: myId, receiverId: userId },
+				{ senderId: userId, receiverId: myId }, // Messages sent by the other user to me
+				{ senderId: myId, receiverId: userId }, // Messages sent by me to the other user
 			],
-		}).sort({ createdAt: 1 });
+		}).sort({ createdAt: 1 }); // Sort messages by creation time in ascending order (oldest first)
 
+		// Send the retrieved messages as a JSON response with a 200 (OK) status
 		res.status(200).json(messages);
 	} catch (error) {
+		// Pass any errors to the error-handling middleware
 		next(error);
 	}
 };

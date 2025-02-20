@@ -1,9 +1,9 @@
 
-import mongoose from "mongoose";
-import { Song } from "../models/song.model.js";
-import { config } from "dotenv";
+import mongoose from "mongoose";  // Mongoose for MongoDB interaction
+import { Song } from "../models/song.model.js";   // Import Song model
+import { config } from "dotenv";   // Import dotenv for environment variables
 
-config();
+config();   // Load environment variables from .env file
 
 const songs = [
 	{
@@ -136,6 +136,7 @@ const songs = [
 
 const seedSongs = async () => {
 	try {
+		// Connect to MongoDB
 		await mongoose.connect(process.env.MONGODB_URI);
 
 		// Clear existing songs
@@ -146,10 +147,12 @@ const seedSongs = async () => {
 
 		console.log("Songs seeded successfully!");
 	} catch (error) {
+		// Log an error message if something goes wrong
 		console.error("Error seeding songs:", error);
 	} finally {
+		// Disconnect from MongoDB
 		mongoose.connection.close();
 	}
 };
 
-seedSongs();
+seedSongs();  // Call the function to seed the database with songs

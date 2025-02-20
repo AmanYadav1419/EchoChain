@@ -25,17 +25,22 @@ dotenv.config();
 const __dirname = path.resolve();
 // call the express function and save it to in variable app
 const app = express();
+
+// Assigns the PORT value from environment variables, allowing flexibility in deployment
 const PORT = process.env.PORT;
 
+// Creates an HTTP server using the Express app
 const httpServer = createServer(app);
+
+// Initializes WebSocket communication on the created HTTP server
 initializeSocket(httpServer);
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+app.use(cors(
+  {
+    origin:"http://localhost:3000",
+    credentials:true,
+  }
+));
 
 // to parse req.body
 // Returns middleware that only parses json data
@@ -59,6 +64,7 @@ app.use(
     },
   })
 );
+
 
 // if user hit the api route , then run userRoutes function, present in routes folder
 app.use("/api/users", userRoutes);

@@ -6,6 +6,7 @@ import { Clock, Pause, Play } from "lucide-react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// Function to format duration from seconds to mm:ss format
 const formatDuration = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
@@ -18,11 +19,12 @@ const AlbumPage = () => {
   const { currentSong, isPlaying, playAlbum, togglePlay } = usePlayerStore();
 
   useEffect(() => {
-    if (albumId) fetchAlbumById(albumId);
+    if (albumId) fetchAlbumById(albumId); // Fetch album details when albumId changes
   }, [fetchAlbumById, albumId]);
 
-  if (isLoading) return null;
+  if (isLoading) return null; // If data is still loading, render nothing
 
+  // Function to play the album or toggle playback
   const handlePlayAlbum = () => {
     if(!currentAlbum) return;
 
@@ -34,6 +36,7 @@ const AlbumPage = () => {
     }
   }
 
+  // Function to play a specific song in the album
   const handlePlaySong = (index: number) => {
     if (!currentAlbum) return
 
@@ -52,7 +55,7 @@ const AlbumPage = () => {
             aria-hidden="true"
           />
 
-          {/* Content */}
+          {/* Album Details Section */}
           <div className="relative z-10">
             <div className="flex p-6 gap-6 pb-8">
               <img
@@ -121,6 +124,7 @@ const AlbumPage = () => {
                       onClick={() => handlePlaySong(index)}
                       className={`grid grid-cols-[16px_4fr_2fr_1fr] gap-4 px-4 py-2 text-sm text-zinc-400 hover:bg-white/5 rounded-md group cursor-pointer`}
                     >
+                      {/* Song Index or Play Icon */}
                       <div className="flex items-center justify-center">
                         {isCurrentSong && isPlaying ? (
                           <div className='size-4 text-green-500'>♫</div>
@@ -132,6 +136,7 @@ const AlbumPage = () => {
                         )}
                       </div>
 
+                      {/* Song Details */}
                       <div className="flex items-center gap-3">
                         <img
                           src={song.imageUrl}
@@ -147,9 +152,11 @@ const AlbumPage = () => {
                           <div>{song.artist}</div>
                         </div>
                       </div>
+                      {/* Release Date */}
                       <div className="flex items-center">
                         {song.createdAt.split("T")[0]}
                       </div>
+                      {/* Duration */}
                       <div className="flex items-center">
                         {formatDuration(song.duration)}
                       </div>
@@ -167,6 +174,3 @@ const AlbumPage = () => {
   );
 };
 export default AlbumPage;
-
-
-// completed till 5:11:00

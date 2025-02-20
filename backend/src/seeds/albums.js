@@ -1,14 +1,14 @@
 
-import mongoose from "mongoose";
-import { Song } from "../models/song.model.js";
-import { Album } from "../models/album.model.js";
-import { config } from "dotenv";
+import mongoose from "mongoose";  // Mongoose for MongoDB interaction
+import { Song } from "../models/song.model.js";  // Import Song model
+import { Album } from "../models/album.model.js";  // Import Album model
+import { config } from "dotenv";  // Import dotenv for environment variables
 
-config();
+config();  // Load environment variables from .env file
 
 const seedDatabase = async () => {
 	try {
-		await mongoose.connect(process.env.MONGODB_URI);
+		await mongoose.connect(process.env.MONGODB_URI);  // Connect to MongoDB using the URI from environment variables
 
 		// Clear existing data
 		await Album.deleteMany({});
@@ -170,15 +170,15 @@ const seedDatabase = async () => {
 			const album = createdAlbums[i];
 			const albumSongs = albums[i].songs;
 
-			await Song.updateMany({ _id: { $in: albumSongs } }, { albumId: album._id });
+			await Song.updateMany({ _id: { $in: albumSongs } }, { albumId: album._id });  // Update songs to reference album
 		}
 
 		console.log("Database seeded successfully!");
 	} catch (error) {
-		console.error("Error seeding database:", error);
+		console.error("Error seeding database:", error);  // Log errors if any occur
 	} finally {
-		mongoose.connection.close();
+		mongoose.connection.close();   // Close the database connection
 	}
 };
 
-seedDatabase();
+seedDatabase();  // Run the seed function

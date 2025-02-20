@@ -1,9 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { useChatStore } from "@/stores/useChatStore";
-import { useUser } from "@clerk/clerk-react";
-import { HeadphonesIcon, Music, Users } from "lucide-react";
-import { useEffect } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";  // Importing Avatar components for user profile pictures
+import { ScrollArea } from "@/components/ui/scroll-area"; // Importing a scrollable area component
+import { useChatStore } from "@/stores/useChatStore"; // Importing chat store to manage user and activity states
+import { useUser } from "@clerk/clerk-react";  // Importing Clerk's useUser hook for authentication
+import { HeadphonesIcon, Music, Users } from "lucide-react"; // Importing icons for UI elements
+import { useEffect } from "react";  // Importing useEffect hook to perform side effects
 
 const FriendsActivity = () => {
 	const { users, fetchUsers, onlineUsers, userActivities } = useChatStore();
@@ -14,16 +14,22 @@ const FriendsActivity = () => {
 	}, [fetchUsers, user]);
 
 	return (
+	
 		<div className='h-full bg-zinc-900 rounded-lg flex flex-col'>
+			{/* Header Section */}
 			<div className='p-4 flex justify-between items-center border-b border-zinc-800'>
 				<div className='flex items-center gap-2'>
+
+					{/* Icon representing users */}
 					<Users className='size-5 shrink-0' />
 					<h2 className='font-semibold'>What they're listening to</h2>
 				</div>
 			</div>
 
+			{/* Show login prompt if user is not logged in */}
 			{!user && <LoginPrompt />}
 
+            {/* Scrollable list of friends' activities */}
 			<ScrollArea className='flex-1'>
 				<div className='p-4 space-y-4'>
 					{users.map((user) => {
@@ -36,6 +42,7 @@ const FriendsActivity = () => {
 								className='cursor-pointer hover:bg-zinc-800/50 p-3 rounded-md transition-colors group'
 							>
 								<div className='flex items-start gap-3'>
+									{/* User Avatar with Online Status Indicator */}
 									<div className='relative'>
 										<Avatar className='size-10 border border-zinc-800'>
 											<AvatarImage src={user.imageUrl} alt={user.fullName} />
@@ -49,12 +56,14 @@ const FriendsActivity = () => {
 										/>
 									</div>
 
+									{/* User Information and Activity */}
 									<div className='flex-1 min-w-0'>
 										<div className='flex items-center gap-2'>
 											<span className='font-medium text-sm text-white'>{user.fullName}</span>
 											{isPlaying && <Music className='size-3.5 text-emerald-400 shrink-0' />}
 										</div>
 
+										{/* Display song details if user is playing music */}
 										{isPlaying ? (
 											<div className='mt-1'>
 												<div className='mt-1 text-sm text-white font-medium truncate'>
@@ -79,6 +88,7 @@ const FriendsActivity = () => {
 };
 export default FriendsActivity;
 
+// Component for prompting users to log in
 const LoginPrompt = () => (
 	<div className='h-full flex flex-col items-center justify-center p-6 text-center space-y-4'>
 		<div className='relative'>
