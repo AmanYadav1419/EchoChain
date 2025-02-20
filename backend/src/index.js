@@ -68,6 +68,7 @@ app.use(
   })
 );
 
+
 // if user hit the api route , then run userRoutes function, present in routes folder
 app.use("/api/users", userRoutes);
 
