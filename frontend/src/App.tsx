@@ -1,5 +1,7 @@
 
 import { Route, Routes } from "react-router-dom";
+
+// Importing different page components for navigation
 import HomePage from "./pages/home/HomePage";
 import AuthCallbackPage from "./pages/auth-callback/AuthCallbackPage";
 import { AuthenticateWithRedirectCallback } from "@clerk/clerk-react";
@@ -14,14 +16,19 @@ import NotFoundPage from "./pages/404/NotFoundPage";
 function App() {
 	return (
 		<>
+		{/* Defines all the application routes */}
 			<Routes>
+				{/* Route for handling Single Sign-On (SSO) callback using Clerk */}
 				<Route
 					path='/sso-callback'
 					element={<AuthenticateWithRedirectCallback signUpForceRedirectUrl={"/auth-callback"} />}
 				/>
+				{/* Route for handling authentication callback */}
 				<Route path='/auth-callback' element={<AuthCallbackPage />} />
+				{/* Admin dashboard route */}
 				<Route path='/admin' element={<AdminPage />} />
 
+				{/* Routes wrapped inside MainLayout (common layout for multiple pages) */}
 				<Route element={<MainLayout />}>
 					<Route path='/' element={<HomePage />} />
 					<Route path='/chat' element={<ChatPage />} />
@@ -29,6 +36,7 @@ function App() {
 					<Route path='*' element={<NotFoundPage />} />
 				</Route>
 			</Routes>
+			{/* Toast notifications for real-time alerts/messages */}
 			<Toaster />
 		</>
 	);

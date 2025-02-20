@@ -20,6 +20,7 @@ const LeftSidebar = () => {
   console.log({ albums });
 
   return (
+    // Main container with full height, flexbox for column layout, and spacing between elements
     <div className="h-full flex flex-col gap-2">
       {/*Navigation menu */}
 
@@ -34,10 +35,13 @@ const LeftSidebar = () => {
               })
             )}
           >
+
+            {/* Home icon with some margin for spacing */}
             <HomeIcon className="mr-2 size-5" />
             <span className="hidden md:inline">Home</span>
           </Link>
 
+          {/* Section only visible to signed-in users */}
           <SignedIn>
             <Link
               to={"/chat"}
@@ -49,6 +53,7 @@ const LeftSidebar = () => {
                 })
               )}
             >
+              {/* Chat/Messages icon with some margin for spacing */}
               <MessageCircle className="mr-2 size-5" />
               <span className="hidden md:inline">Messages</span>
             </Link>

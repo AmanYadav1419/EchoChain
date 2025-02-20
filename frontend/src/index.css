@@ -1,10 +1,14 @@
+/* Import Tailwind's base styles */
 @tailwind base;
+/* Import Tailwind's component styles */
 @tailwind components;
+/* Import Tailwind's utility styles */
 @tailwind utilities;
 
 
 
 @layer base {
+  /* Define custom CSS variables (colors, spacing, etc.) for light mode */
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -26,6 +30,7 @@
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
+    /* Colors for charts */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -33,6 +38,7 @@
     --chart-5: 27 87% 67%;
   }
 
+  /* Define custom variables for dark mode */
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
@@ -53,6 +59,8 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
+
+    /* Chart colors in dark mode */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -64,9 +72,12 @@
 
 
 @layer base {
+  /* Apply the border color to all elements */
   * {
     @apply border-border;
   }
+
+  /* Apply background and text color based on theme */
   body {
     @apply bg-background text-foreground;
   }

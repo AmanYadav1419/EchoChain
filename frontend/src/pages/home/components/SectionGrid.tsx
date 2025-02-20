@@ -34,7 +34,7 @@ const SectionGrid = ({ songs, title, isLoading }: SectionGridProps) => {
 									className='w-full h-full object-cover transition-transform duration-300 
 									group-hover:scale-105'
 								/>
-            					{/* TODO: add play button */}
+            					
 							</div>
 							<PlayButton song={song} />
 						</div>
@@ -48,4 +48,3 @@ const SectionGrid = ({ songs, title, isLoading }: SectionGridProps) => {
 };
 export default SectionGrid;
 
-// done upto 4:36:10

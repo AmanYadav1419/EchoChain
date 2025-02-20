@@ -25,14 +25,22 @@ dotenv.config();
 const __dirname = path.resolve();
 // call the express function and save it to in variable app
 const app = express();
+
+// Assigns the PORT value from environment variables, allowing flexibility in deployment
 const PORT = process.env.PORT;
 
+// Creates an HTTP server using the Express app
 const httpServer = createServer(app);
+
+// Initializes WebSocket communication on the created HTTP server
 initializeSocket(httpServer);
 
+// Enables Cross-Origin Resource Sharing (CORS) for the frontend running on localhost:3000
 app.use(cors(
   {
+     // Allows requests only from this origin
     origin:"http://localhost:3000",
+     // Allows cookies and authentication headers to be sent
     credentials:true,
   }
 ));

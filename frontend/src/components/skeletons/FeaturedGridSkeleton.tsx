@@ -1,6 +1,8 @@
 const FeaturedGridSkeleton = () => {
 	return (
+		// Creates a responsive grid with different column layouts based on screen size
 		<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8'>
+			{/* Generates an array of 6 elements and maps over them to create skeleton items */}
 			{Array.from({ length: 6 }).map((_, i) => (
 				<div key={i} className='flex items-center bg-zinc-800/50 rounded-md overflow-hidden animate-pulse'>
 					<div className='w-16 sm:w-20 h-16 sm:h-20 bg-zinc-700 flex-shrink-0' />
