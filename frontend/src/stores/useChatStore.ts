@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/lib/axios";
 import { Message, User } from "@/types";
 import { create } from "zustand";
-import { io } from "socket.io-client";
+import  io  from "socket.io-client";
 
 // Define the structure of the ChatStore state
 interface ChatStore {
