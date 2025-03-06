@@ -1,0 +1,421 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "MusicBought",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "liker",
+						"type": "address"
+					}
+				],
+				"name": "MusicLiked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "musicName",
+						"type": "string"
+					}
+				],
+				"name": "MusicUploaded",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "buyMusic",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllMusic",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct HolymolyPlayer.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLikedMusicByUser",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct HolymolyPlayer.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyBoughtMusics",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct HolymolyPlayer.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyMusics",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct HolymolyPlayer.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTotalLikes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "likeMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "unlikeMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_musicName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_imageCID",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_audioCID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "uploadMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"demo_try4.sol": "HolymolyPlayer"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"demo_try4.sol": {
+			"keccak256": "0x1660372f28b34b38e17c845c77815d69b0c330e857a4e4561d7186daa5dc3152",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2ebc457a2c8fc096e8591a1a2f43bf9be4ddee51600baaa1bfb53bee0dcc13b4",
+				"dweb:/ipfs/QmWSnT9frik4TJbH8LrhLJ8ZW5gPT3LHajuQkf8S766i8n"
+			]
+		}
+	},
+	"version": 1
+}

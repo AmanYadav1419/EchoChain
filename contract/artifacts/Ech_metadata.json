@@ -1,0 +1,421 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "MusicBought",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "liker",
+						"type": "address"
+					}
+				],
+				"name": "MusicLiked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "musicName",
+						"type": "string"
+					}
+				],
+				"name": "MusicUploaded",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "buyMusic",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllMusic",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Ech.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLikedMusicByUser",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Ech.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyBoughtMusics",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Ech.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMyMusics",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address payable",
+								"name": "owner",
+								"type": "address"
+							},
+							{
+								"internalType": "address payable",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "price",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "musicName",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "imageCID",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "audioCID",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Ech.MusicToken[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTotalLikes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "likeMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "unlikeMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_musicName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_imageCID",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_audioCID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "uploadMusic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"demo_try4.sol": "Ech"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"demo_try4.sol": {
+			"keccak256": "0xebff884c98f08242015f4d4403d324c4b1c4a167e78247070a273038dad2e464",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5728f9da8c833c7f32d428a2bcceb3619d36677f3c153d0f7d42f9aff0f51b47",
+				"dweb:/ipfs/Qmae83ARB3xmp28jAmQGRpFaADR8kbakvCHMUwzLU6dhrW"
+			]
+		}
+	},
+	"version": 1
+}
