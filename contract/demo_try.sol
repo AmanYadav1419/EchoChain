@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract Echochai {
+contract Echochain_demo1 {
     struct Music {
         uint256 id;
         address artist;

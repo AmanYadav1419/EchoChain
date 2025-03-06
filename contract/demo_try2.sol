@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
-contract EchoChain is ERC721URIStorage, Ownable {
+contract EchoChain_demo2 is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     using ECDSA for bytes32;
 
