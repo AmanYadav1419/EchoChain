@@ -13,6 +13,8 @@ import { cn } from "@/lib/utils";
 // Predefined button styling variants
 import { buttonVariants } from "./ui/button";
 
+import ConnectButton from "./connect-button/ConnectButton";
+
 // Define the Topbar component
 const Topbar = () => {
 	// Retrieve admin status from authentication store
@@ -42,6 +44,8 @@ const Topbar = () => {
 				<SignedOut>
 					<SignInOAuthButtons />
 				</SignedOut>
+
+				<ConnectButton />
 
 				<UserButton />
 			</div>
