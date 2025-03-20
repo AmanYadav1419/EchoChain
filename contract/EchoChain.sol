@@ -15,12 +15,9 @@ contract Echochain {
 
     mapping(uint256 => MusicToken) musicTokens;
     uint256 nextTokenId = 1; 
-    mapping(address => uint256[])  likedMusic; 
-    mapping(uint256 => uint256)  totalLikes;
 
 
     event MusicUploaded(uint256 indexed tokenId, address indexed author, string musicName);
-    event MusicLiked(uint256 indexed tokenId, address indexed liker);
     event MusicBought(uint256 indexed tokenId, address indexed buyer, uint256 price);
 
 
@@ -81,50 +78,6 @@ contract Echochain {
 }
 
 
-    function likeMusic(uint256 tokenId) external {
-        MusicToken storage music = musicTokens[tokenId];
-        require(music.tokenId != 0, "Music Token does not exist");
-    uint256[] storage likedTokenIds = likedMusic[msg.sender];
-    for (uint256 i = 0; i < likedTokenIds.length; i++) {
-        require(likedTokenIds[i] != tokenId, "Music is already liked");
-    }
-        music.likes++;
-        totalLikes[tokenId]++;
-
-        if (likedMusic[msg.sender].length == 0) {
-            likedMusic[msg.sender] = [tokenId];
-        } else {
-            likedMusic[msg.sender].push(tokenId);
-        }
-
-        emit MusicLiked(tokenId, msg.sender);
-    }
-
-   function getLikedMusicByUser() external view returns (MusicToken[] memory) {
-        uint256[] memory likedTokenIds = likedMusic[msg.sender];
-        MusicToken[] memory userLikedMusic = new MusicToken[](likedTokenIds.length);
-
-        for (uint256 i = 0; i < likedTokenIds.length; i++) {
-            MusicToken storage music = musicTokens[likedTokenIds[i]];
-            userLikedMusic[i] = MusicToken(
-                music.tokenId,
-                music.owner,
-                music.author,
-                music.price,
-                music.likes,
-                music.musicName,
-                music.imageCID,
-                music.audioCID
-            );
-        }
-        return userLikedMusic;
-    }
-
-
-    function getTotalLikes(uint256 tokenId) external view returns (uint256) {
-        return totalLikes[tokenId];
-    }
-
 
 function buyMusic(uint256 tokenId) external payable {
     MusicToken storage music = musicTokens[tokenId];
@@ -139,36 +92,6 @@ function buyMusic(uint256 tokenId) external payable {
 
     emit MusicBought(tokenId, msg.sender, music.price);
 }
-
-
-
-    function unlikeMusic(uint256 tokenId) external {
-        MusicToken storage music = musicTokens[tokenId];
-        require(music.tokenId != 0, "Music Token does not exist");
-
-        // Check if the caller has liked this music
-        uint256[] storage likedTokenIds = likedMusic[msg.sender];
-        bool isLiked = false;
-        uint256 indexToRemove;
-        for (uint256 i = 0; i < likedTokenIds.length; i++) {
-            if (likedTokenIds[i] == tokenId) {
-                isLiked = true;
-                indexToRemove = i;
-                break;
-            }
-        }
-        require(isLiked, "Music is not liked");
-        music.likes--;
-        totalLikes[tokenId]--;
-
-        if (indexToRemove != likedTokenIds.length - 1) {
-            likedTokenIds[indexToRemove] = likedTokenIds[likedTokenIds.length - 1];
-        }
-        likedTokenIds.pop();
-
-        emit MusicLiked(tokenId, msg.sender);
-    }
-
 
     function getMyBoughtMusics() external view returns (MusicToken[] memory) {
     uint256 count = 0;
