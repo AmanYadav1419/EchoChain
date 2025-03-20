@@ -48,7 +48,7 @@ npm install
 
 1. Create a `.env` file in the `backend` folder and add the necessary environment variables:
 
-- There is already a `.env` file pushed to GitHub as I trust you, and for a better development experience, all `.env` files are present.
+<!-- - There is already a `.env` file pushed to GitHub as I trust you, and for a better development experience, all `.env` files are present. -->
 
 ```
 MONGO_URI=your_mongodb_uri
@@ -90,7 +90,7 @@ npx hardhat run scripts/deploy.js --network your_network
 
 1. Create a `.env.local` file in the `frontend` folder and add the necessary environment variables:
 
-- There is already a `.env.local` file pushed to GitHub as I trust you, and for a better development experience, all `.env` files are present.
+<!-- - There is already a `.env.local` file pushed to GitHub as I trust you, and for a better development experience, all `.env` files are present. -->
 
 ```
 VITE_API_URL=your_backend_api_url
@@ -111,7 +111,7 @@ npm run dev
 
 - **Buy Music**: Implement functionality for users to purchase music tracks or albums.
 - **Sell Music**: Implement functionality for artists to sell their music on the platform.
-- **Chat Feature with Artist**: Implement a chat feature that allows users to communicate with artists directly.
+<!-- - **Chat Feature with Artist**: Implement a chat feature that allows users to communicate with artists directly. -->
 
 ## Contributing# Echochain
 
