@@ -1,5 +1,8 @@
 // Represents a song in the system
 export interface Song {
+    // temporary or confusion part
+    tokenId:string,
+    price:string,
     _id: string;
     title: string;
     artist: string;
